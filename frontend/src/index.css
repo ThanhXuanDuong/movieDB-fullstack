@@ -1,13 +1,100 @@
-body {
+html,body{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  color: white;
+  background-color:#202023;
+  font-family: Roboto Thin,sans-serif;
+}
+.HomePage-Wrapper{
+  margin: 0;
+  width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.HomePage-Wrapper .HomePage-Header{
+  position: fixed;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left:0;
+  height: 70px;
+  display: block;
+  text-align: center;
+  background-color: #FF6C37;
+  box-shadow: 5px 3px 10px gainsboro;
+}
+
+.HomePage-Wrapper  .HomePage-Main{
+  margin: 8rem 4rem;
+  display: block;
+}
+
+.HomePage-Main .HomePage-Gallery,.HomePage-AddMovieForm {
+  background-color: #3D3F41;
+  box-shadow: 8px 5px 8px black;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.HomePage-Wrapper  .HomePage-Main input{
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 8px 5px 8px #2B2B2B;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.AddMovieForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddMovieForm .input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.AddMovieForm .input h3{
+  width: 150px;
+}
+.AddMovieForm div input,button{
+  border: none;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.AddMovieForm .add-button{
+  display: flex;
+  flex-direction: row-reverse;
+}
+button{
+  background-color: #FF6C37;
+  color: whitesmoke;
+}
+button:active {
+  background-color: white;
+  color: #FF6C37;
+}
+.MovieGallery {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.MovieCard{
+  padding: 1rem;
+  background-color: #2B2B2B;
+  text-align: center;
+  box-shadow: 5px 2px 5px black;
+}
+
+.MovieCard .MovieCard-Poster{
+  display: flex;
+  object-fit: cover;
+  justify-content: center;
+}
+
+.MovieCard .MovieCard-Poster img{
+  width: 200px;
+  height: 295px;
 }
