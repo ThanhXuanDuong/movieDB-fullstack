@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Movie {
-    private String id;
+    private int id;
     private String title;
     private int year;
     private String posterUrl;

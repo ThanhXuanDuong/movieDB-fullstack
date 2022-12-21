@@ -10,8 +10,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovieService {
     private final MovieRepo repo;
+    private int id=0;
+
     public List<Movie> getAllMovies() {
         return repo.getAllMovies();
+    }
+
+    public Movie getById(int id) {
+        return repo.getById(id);
     }
 
     public Movie addMovie(Movie newMovie) {
@@ -19,7 +25,13 @@ public class MovieService {
         return repo.addMovie(newMovie);
     }
 
-    public String idGenerator() {
-        return String.valueOf(repo.getAllMovies().size() +1);
+    public int idGenerator() {
+        return ++id;
     }
+
+    public List<Movie> deleteMovie(int id) {
+        return repo.deleteMovie(id);
+    }
+
+
 }

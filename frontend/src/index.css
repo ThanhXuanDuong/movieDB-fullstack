@@ -28,6 +28,11 @@ html,body{
   display: block;
 }
 
+.HomePage-Main .HomePage-Main-Bar{
+}
+
+
+
 .HomePage-Main .HomePage-Gallery,.HomePage-AddMovieForm {
   background-color: #3D3F41;
   box-shadow: 8px 5px 8px black;
@@ -86,6 +91,7 @@ button:active {
   background-color: #2B2B2B;
   text-align: center;
   box-shadow: 5px 2px 5px black;
+  cursor: pointer;
 }
 
 .MovieCard .MovieCard-Poster{
@@ -97,4 +103,22 @@ button:active {
 .MovieCard .MovieCard-Poster img{
   width: 200px;
   height: 295px;
+}
+
+.MovieCard-buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.2rem
+}
+.MovieCard button{
+  width: 2rem;
+}
+
+.favorite-list-button{
+  margin-top: 2rem;
+  background-color:  #3D3F41;
+}
+
+.MoviePage{
+  color: white;
 }
