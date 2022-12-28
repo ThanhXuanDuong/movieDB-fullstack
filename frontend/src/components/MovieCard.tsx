@@ -1,14 +1,14 @@
 import Movie from "../types/Movie";
 import MoviePage from "../pages/MoviePage";
 import $ from "jquery";
-import { FaHeart,FaMinus} from 'react-icons/fa';
+import {FaHeart,FaMinus} from 'react-icons/fa';
 import {RiEdit2Fill} from "react-icons/ri";
 
 export default function MovieCard({
 movie,
 onDelete,
 onFavorite
-}: {
+}:{
 movie: Movie,
 onDelete: (id : number) =>void
 onFavorite: (movie : Movie) =>void
@@ -26,9 +26,9 @@ onFavorite: (movie : Movie) =>void
     return (
         <div className={"MovieCard"}>
             <div className={"MovieCard-buttons"}>
-                <button  onClick={() => onDelete(movie.id)}><FaMinus/></button>
-                <button  className={"edit-button" + movie.id}><RiEdit2Fill/></button>
-                <button  className={"favorite-button" + movie.id} onClick={onClick}><FaHeart/></button>
+                <button  className={`delete-button${movie.id}`} onClick={() => onDelete(movie.id)}><FaMinus/></button>
+                <button  className={`edit-button${movie.id}`}><RiEdit2Fill/></button>
+                <button  className={`favorite-button${movie.id}`} onClick={onClick}><FaHeart/></button>
             </div>
             <h4 className={"MovieCard-Title"}>
                 {movie.title} ({movie.year})

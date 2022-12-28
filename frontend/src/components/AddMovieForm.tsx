@@ -23,24 +23,25 @@ onAdd: (newMovie:NewMovie) => void }
         } else {
             alert("Invalid Eingabe");
         }
+        onChange({title:"",posterUrl:"",year:0});
     };
 
     return (
         <form className={"AddMovieForm"} onSubmit= {onSubmit}>
             <div className={"input"}>
-                <h3>Title</h3>
-                <input type = "text" name="title" value={newMovie.title} onChange={change}/>
+                <label htmlFor="title">Title:</label>
+                <input type = "text" id="title" name="title" value={newMovie.title} onChange={change} autoFocus/>
             </div>
 
             <div className={"input"}>
-                <h3>Poster URL</h3>
-                <input type = "text" name="posterUrl" value={newMovie.posterUrl} onChange={change}/>
+                <label htmlFor="posterUrl">Poster URL:</label>
+                <input type = "url" id="posterUrl" name="posterUrl" value={newMovie.posterUrl} onChange={change}/>
 
             </div>
 
             <div className={"input"}>
-                <h3>Year</h3>
-                <input type = "text" name="year" value={newMovie.year} onChange={change}/>
+                <label htmlFor="year">Year:</label>
+                <input type = "number" id="year" name="year" value={newMovie.year} onChange={change}/>
             </div>
 
             <div className={"add-button"}>

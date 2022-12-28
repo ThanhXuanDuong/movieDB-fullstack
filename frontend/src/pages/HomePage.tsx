@@ -26,7 +26,7 @@ export default function HomePage(){
 
     const searchedMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchedTitle));
 
-    const onAdd = () => {
+    const onAdd = (newMovie:NewMovie) => {
         (async ()=>{
             const response = await axios.post("/api/movies",newMovie);
             setMovies([...movies,response.data]);
@@ -34,6 +34,7 @@ export default function HomePage(){
         setPopupState(false);
     };
 
+    console.log(movies);
     const onDelete =(id:number) =>{
         (async () => await axios.delete("/api/movies/"+ id))();
         setMovies(movies.filter(m => m.id !== id));
