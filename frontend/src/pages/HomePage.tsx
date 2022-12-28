@@ -2,20 +2,24 @@ import MovieGallery from "../components/MovieGallery";
 import {useEffect, useState} from "react";
 import Movie from "../types/Movie";
 import axios from "axios";
-import AddMovieForm from "../components/AddMovieForm";
 import NewMovie from "../types/NewMovie";
-import {useNavigate} from "react-router-dom";
+import $ from 'jquery';
+import Popup from "../components/Popup";
+import AddMovieForm from "../components/AddMovieForm";
+import {FaFilter, FaHeart, FaPlus} from "react-icons/fa";
 
 export default function HomePage(){
     const [movies, setMovies] = useState<Movie[]>([]);
     const [searchedTitle, setSearchedTitle ] = useState<string>("");
     const [newMovie, setNewMovie] = useState<NewMovie>({title:"",year:0,posterUrl:""});
-    const navigate =useNavigate();
+    const [toggleOn, setToggleOn]= useState(false);
+    const [popupState, setPopupState]= useState(false);
 
     useEffect(()=>{
         (async ()=>{
             const response = await axios.get("/api/movies");
-            setMovies(response.data);
+            const data: Movie[] =response.data;
+            setMovies(data);
         })();
         }
     ,[]);
@@ -27,6 +31,7 @@ export default function HomePage(){
             const response = await axios.post("/api/movies",newMovie);
             setMovies([...movies,response.data]);
         })();
+        setPopupState(false);
     };
 
     const onDelete =(id:number) =>{
@@ -34,24 +39,49 @@ export default function HomePage(){
         setMovies(movies.filter(m => m.id !== id));
     }
 
-    const [favorites, setFavorites] = useState<Movie[]>([]);
-    const onFavorite = (id:number) =>{
-        const movie = movies.find(movie => movie.id === id);
-        movie? setFavorites( [...favorites, movie]) : setFavorites( [...favorites]);
-        console.log(favorites);
+    const onFavorite = (movie:Movie) =>{
+        setMovies(movies.map(m => m.id === movie.id
+            ? { ...m, favoriteStatus: movie.favoriteStatus}
+            : { ...m}));
+    }
+
+    const favorites =movies.filter(movie => movie.favoriteStatus);
+
+    const onFavoriteList= () => {
+        setToggleOn(!toggleOn);
+        if ($('.favorite-list-button').hasClass('active')) {
+            $('.favorite-list-button').removeClass('active')
+        } else {
+            $('.favorite-list-button').addClass('active')
+        }
     }
 
     return (
         <div className={"HomePage-Wrapper"}>
+
             <div className={"HomePage-Header"}>
                 <header>
                     <h1>Movie DB</h1>
                 </header>
-
             </div>
 
             <div className={"HomePage-Main"}>
                 <div className={"HomePage-Main-Bar"}>
+                    <div className={"HomePage-Buttons"}>
+                        <div className={"HomePage-Favorites"}>
+                            <button className={"favorite-list-button"}
+                                    onClick={onFavoriteList}><FaHeart/></button>
+                        </div>
+                        <div className={"HomePage-Filter"}>
+                            <button className={"filter-button"}><FaFilter/></button>
+                        </div>
+
+                        <button className={"add-button"}
+                                onClick={() => setPopupState(true)}>
+                            <FaPlus/>
+                        </button>
+                    </div>
+
                     <div className={"HomePage-Searchbar"}>
                         <input placeholder={"Search movie ..."}
                                onChange={e => setSearchedTitle(e.target.value)}
@@ -59,30 +89,25 @@ export default function HomePage(){
                     </div>
                 </div>
 
-                <div className={"HomePage-AddMovieForm"}>
+                <Popup trigger={popupState} setTrigger={setPopupState}>
                     <AddMovieForm newMovie={newMovie}
                                   onChange={setNewMovie}
-                                  onAdd={onAdd} />
-                </div>
-
-                <button className={"favorite-list-button"}
-                        onClick={() =>{navigate("/movie/favorite",{state:{favorites}})}}>Favorites</button>
+                                  onAdd={onAdd}/>
+                </Popup>
 
                 <div className={"HomePage-Gallery"}>
-                    {movies.length!==0 ?
-                        searchedMovies.length!==0 ?
+                    {movies.length !== 0 ?
+                        searchedMovies.length !== 0 ?
                             <MovieGallery
-                                movies ={searchedMovies}
-                                onDelete ={onDelete}
-                                onFavorite = {onFavorite}
+                                movies={!toggleOn ? searchedMovies : favorites}
+                                onDelete={onDelete}
+                                onFavorite={onFavorite}
                             />
                             :
                             <div>No movie found</div>
-                        :
-                        <div>No data yet</div>
+                        : <div>No data yet</div>
                     }
                 </div>
-
             </div>
         </div>
     );

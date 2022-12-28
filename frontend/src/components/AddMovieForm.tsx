@@ -1,5 +1,5 @@
 import NewMovie from "../types/NewMovie";
-import {ChangeEvent} from "react";
+import {ChangeEvent, FormEvent} from "react";
 
 export default function AddMovieForm(
 {newMovie,
@@ -16,14 +16,19 @@ onAdd: (newMovie:NewMovie) => void }
             [e.currentTarget.name]: e.currentTarget.value
         });
     };
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (newMovie.title!=="" && newMovie.posterUrl!=="" && newMovie.year >0){
+            onAdd(newMovie);
+        } else {
+            alert("Invalid Eingabe");
+        }
+    };
 
     return (
-        <form className={"AddMovieForm"} onSubmit= {async e => {
-            e.preventDefault();
-            onAdd(newMovie);
-        }}>
+        <form className={"AddMovieForm"} onSubmit= {onSubmit}>
             <div className={"input"}>
-                <h3>Titel</h3>
+                <h3>Title</h3>
                 <input type = "text" name="title" value={newMovie.title} onChange={change}/>
             </div>
 

@@ -3,6 +3,7 @@ type Movie= {
     title: string,
     year: number,
     posterUrl: string
+    favoriteStatus: boolean
 }
 
 export default Movie;

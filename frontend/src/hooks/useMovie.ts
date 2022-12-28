@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 
 export default function useMovie(){
     const {id} = useParams<{id:string}>();
-    const [movie, setMovie] = useState<Movie>({id: 0,title:"",year:0,posterUrl:""});
+    const [movie, setMovie] = useState<Movie>({id: 0,title:"",year:0,posterUrl:"",favoriteStatus:false});
 
     useEffect( () =>{
         (async () =>{

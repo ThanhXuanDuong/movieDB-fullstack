@@ -28,26 +28,52 @@ html,body{
   display: block;
 }
 
-.HomePage-Main .HomePage-Main-Bar{
+.HomePage-Wrapper  .HomePage-Main .HomePage-Main-Bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
 }
 
+.HomePage-Main-Bar .HomePage-Buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.HomePage-Main-Bar .HomePage-Buttons button{
+  width: 2rem;
+  cursor: pointer;
+}
 
-
-.HomePage-Main .HomePage-Gallery,.HomePage-AddMovieForm {
+.HomePage-Main-Bar .HomePage-Searchbar{
+  width:50%;
+  display: flex;
+}
+.HomePage-Main .HomePage-Gallery{
   background-color: #3D3F41;
   box-shadow: 8px 5px 8px black;
   padding: 2rem;
   margin-top: 2rem;
+  display: flex;
 }
 
-.HomePage-Wrapper  .HomePage-Main input{
+.HomePage-Main .HomePage-Main-Bar .HomePage-Searchbar input{
   outline: none;
-  box-sizing: border-box;
-  box-shadow: 8px 5px 8px #2B2B2B;
   width: 100%;
+  margin: inherit;
   padding: 0.5rem;
+  background-color: #3D3F41;
+  border:1px solid #FF6C37;
   border-radius: 5px;
+  color: white;
 }
+
+input::placeholder{
+  color: lightgrey;
+}
+
 .AddMovieForm {
   display: flex;
   flex-direction: column;
@@ -55,15 +81,16 @@ html,body{
 
 .AddMovieForm .input{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .AddMovieForm .input h3{
-  width: 150px;
+  width: 15rem;
+  margin-right: 1rem;
 }
 .AddMovieForm div input,button{
   border: none;
-  height: 30px;
+  height: 2rem;
   border-radius: 5px;
 }
 
@@ -71,18 +98,32 @@ html,body{
   display: flex;
   flex-direction: row-reverse;
 }
+
 button{
-  background-color: #FF6C37;
-  color: whitesmoke;
+  background-color:#FF6C37;
+  color: white;
 }
+
 button:active {
   background-color: white;
   color: #FF6C37;
 }
+
+.active{
+  border: none;
+  background: white;
+  color: #FF6C37;
+}
+
+.MovieGallery-Wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .MovieGallery {
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   gap: 1rem;
 }
 
@@ -110,15 +151,47 @@ button:active {
   justify-content: flex-end;
   gap: 0.2rem
 }
-.MovieCard button{
+.MovieCard .MovieCard-buttons button{
   width: 2rem;
+  text-align: center;
+  background-color:#3D3F41;
+  border: 1px solid #FF6C37;
+  cursor: pointer;
+}
+.MovieCard .MovieCard-buttons button:hover{
+  background-color: #FF6C37;
+  color: white;
 }
 
-.favorite-list-button{
-  margin-top: 2rem;
-  background-color:  #3D3F41;
+.MovieCard .MovieCard-buttons button:active{
+  background-color: white;
+  color: #FF6C37;
 }
 
 .MoviePage{
   color: white;
+}
+
+.Popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Popup-inner {
+  position: relative;
+  padding: 8rem;
+  background-color: black;
+}
+.Popup-inner .close-button {
+  position: absolute;
+  top: 1rem;
+  right:1rem;
+  width: 2rem;
 }

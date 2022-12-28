@@ -8,17 +8,19 @@ onFavorite
 }:{
 movies: Movie[],
 onDelete: (id: number) =>void,
-onFavorite: (id: number) =>void
+onFavorite: (movie : Movie) =>void
 })
 {
     return (
-        <div className={"MovieGallery"}>
-            {movies.map(movie => <MovieCard
-                key={movie.id}
-                movie ={movie}
-                onDelete ={onDelete}
-                onFavorite ={onFavorite}
-        />)}
+        <div className={"MovieGallery-Wrapper"}>
+            <div className={"MovieGallery"}>
+                {movies.map(movie => <MovieCard
+                    key={movie.id}
+                    movie ={movie}
+                    onDelete ={onDelete}
+                    onFavorite ={onFavorite}
+            />)}
+            </div>
         </div>
     );
 }
