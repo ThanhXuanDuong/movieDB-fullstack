@@ -1,9 +1,9 @@
 type Movie= {
-    id: number,
+    id?: number,
     title: string,
     year: number,
     posterUrl: string
-    favoriteStatus: boolean
+    favoriteStatus?: boolean
 }
 
 export default Movie;

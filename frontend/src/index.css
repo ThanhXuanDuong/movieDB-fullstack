@@ -74,39 +74,45 @@ input::placeholder{
   color: lightgrey;
 }
 
-.AddMovieForm {
+.MovieForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.AddMovieForm div{
+.MovieForm div{
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
-.AddMovieForm div input,button{
+.MovieForm div input,button{
   border: none;
   height: 2rem;
   border-radius: 5px;
 }
 
-.AddMovieForm div input{
+.MovieForm div input{
   width: 20rem;
 }
-.AddMovieForm .add-button{
+.MovieForm .form-button{
   display: flex;
   flex-direction: row-reverse;
 }
 
 button{
+  min-width: 2rem;
   background-color:#FF6C37;
   color: white;
 }
 
-button:active {
+button:hover{
   background-color: white;
   color: #FF6C37;
+}
+
+button:active {
+  background-color:#FF6C37;
+  color: white;
 }
 
 .active{
@@ -203,4 +209,11 @@ button:active {
   top: 1rem;
   right:1rem;
   width: 2rem;
+}
+
+.conformation-box :last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
 }

@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +25,7 @@ public class MovieService {
     }
 
     public int idGenerator() {
-        List<Integer> sortedIds= repo.getAllMovies().stream().map(movie -> movie.getId()).sorted().collect(Collectors.toList());
+        List<Integer> sortedIds= repo.getAllMovies().stream().map(Movie::getId).sorted().toList();
         return sortedIds.get(sortedIds.size()-1)+1;
     }
 
@@ -34,5 +33,7 @@ public class MovieService {
         return repo.deleteMovie(id);
     }
 
-
+    public Movie updateMovie(Movie movie) {
+        return repo.updateMovie(movie);
+    }
 }

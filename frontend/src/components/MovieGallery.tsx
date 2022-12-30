@@ -4,11 +4,13 @@ import MovieCard from "./MovieCard";
 export default function MovieGallery({
 movies,
 onDelete,
-onFavorite
+onFavorite,
+onEdit
 }:{
 movies: Movie[],
-onDelete: (id: number) =>void,
+onDelete: (id: number | undefined) =>void,
 onFavorite: (movie : Movie) =>void
+onEdit: (movie : Movie) =>void
 })
 {
     return (
@@ -19,6 +21,7 @@ onFavorite: (movie : Movie) =>void
                     movie ={movie}
                     onDelete ={onDelete}
                     onFavorite ={onFavorite}
+                    onEdit = {onEdit}
             />)}
             </div>
         </div>

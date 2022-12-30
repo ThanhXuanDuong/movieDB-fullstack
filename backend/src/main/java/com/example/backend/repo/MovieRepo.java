@@ -1,12 +1,9 @@
 package com.example.backend.repo;
 import com.example.backend.model.Movie;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class MovieRepo {
@@ -32,9 +29,9 @@ public class MovieRepo {
             for (Movie m : movies){
                 if (m.getId()==id){
                     movie =m;
-                    continue;
-                };
-            };
+                    break;
+                }
+            }
 
         return movie;
     }
@@ -49,5 +46,20 @@ public class MovieRepo {
         return movies;
     }
 
+    public Movie updateMovie(Movie movie) {
+        int index =-1;
+        for (int i =0; i<movies.size(); i++){
+            if (movies.get(i).getId()== movie.getId()){
+                index = i;
+                break;
+            }
+        }
 
+        try {
+            movies.set(index, movie);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Id not found");
+        }
+        return movie;
+    }
 }
