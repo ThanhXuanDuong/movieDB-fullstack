@@ -129,7 +129,7 @@ button:active {
 .MovieGallery {
   display:flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -151,6 +151,20 @@ button:active {
   width: 200px;
   height: 295px;
 }
+/*
+@media (min-width: 560px) {
+  .MovieCard {
+    width: calc(33.33% + 2rem);
+  }
+}
+
+@media (min-width: 800px) {
+  .MovieCard {
+    width: calc(25% + 1rem);
+  }
+}
+
+ */
 
 .MovieCard-buttons{
   display: flex;
@@ -204,6 +218,7 @@ button:active {
   padding: 8rem;
   background-color: black;
 }
+
 .Popup-inner .close-button {
   position: absolute;
   top: 1rem;

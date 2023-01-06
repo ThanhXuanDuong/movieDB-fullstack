@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Fullstack-template.iml" filepath="$PROJECT_DIR$/.idea/Fullstack-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MovieDB.iml" filepath="$PROJECT_DIR$/.idea/MovieDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
     </modules>
   </component>
